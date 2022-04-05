@@ -5,16 +5,15 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        dict = {}
+        mp = {}
         for i in range(len(nums)):
-            if dict.__contains__(nums[i]):
-                dict[nums[i]][0] += 1
+            if mp.__contains__(target - nums[i]):
+                print(mp)
+                return [i, mp[target - nums[i]]]
             else:
-                dict[nums[i]] = [1, i]
+                mp[nums[i]] = i
 
-        for i in range(len(nums)):
-            if dict.__contains__(target - nums[i]) and dict[target - nums[i]][1] != i:
-                return [i, dict[target - nums[i]][1]]
 
-print(Solution().twoSum([2,7,11,15], 9))
+
+print(Solution().twoSum([3,3,], 6))
 
