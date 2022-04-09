@@ -11,4 +11,4 @@ class Solution(object):
                 cnt += 1
         return cnt
 
-print(Solution().hammingWeight(11111110000))
+print(Solution().hammingWeight(43))
