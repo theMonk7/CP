@@ -3,7 +3,7 @@ from collections import deque
 
 class Solution:
     # @param A : tuple of integers
-    # @param B : integer
+    # @param B : integer window size
     # @return a list of integers
 
     def slidingMaximum(self, A, B):
