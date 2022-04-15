@@ -11,4 +11,4 @@ class Solution:
                 h_map[arr[i]] += 1
             else:
                 h_map[arr[i]] = 1
-        return ans        
+        return ans
