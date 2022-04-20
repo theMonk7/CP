@@ -17,12 +17,13 @@ class Solution(object):
         for k in range(i, n):
             if k > i and arr[k] == arr[k - 1]:
                 continue
-            if arr[k] <= tar:
-                temp.append(arr[k])
-                self.helper(arr, n, k + 1, temp[:], res, tar - arr[k])
-                temp.pop()
+            if tar < arr[k]:
+                break
+            temp.append(arr[k])
+            self.helper(arr, n, k + 1, temp[:], res, tar - arr[k])
+            temp.pop()
 
-arr = [2,1,2,1,1]
-t = 4
+arr = [0,0,1,0,1]
+t = 2
 
 print(Solution().combinationSum2(arr,t))
