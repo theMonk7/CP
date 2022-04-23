@@ -1,9 +1,9 @@
 class Solution:
-    def partition(self, s: str) -> List[List[str]]:
+    def partition(self, s: str) -> list[list[str]]:
         res: list[list[str]] = []
         self.helper(s, res, [])
         return res
-
+    #O(n) = N*2^N
     def helper(self, s: str, res: list[list[str]], temp: list[str]) -> None:
         if s == "":
             res.append(temp)
