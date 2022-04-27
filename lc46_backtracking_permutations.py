@@ -18,17 +18,19 @@ class Solution(object):
             temp.append(nums[k])
             self.bt_p(nums, n, temp[:], res)
             temp.pop()
+
     res2 = []
-    def swap_permute(self,nums,n,i):
+
+    def swap_permute(self, nums, n, i):
         if i == n:
             self.res2.append(nums)
             return
-        for k in range(i,n):
-            nums[k],nums[i] = nums[i], nums[k]
-            self.swap_permute(nums[:],n,i+1)
+        for k in range(i, n):
+            nums[k], nums[i] = nums[i], nums[k]
+            self.swap_permute(nums[:], n, i + 1)
             nums[k], nums[i] = nums[i], nums[k]
 
 
 # print(Solution().permute([1,2,3]))
-Solution().swap_permute([1,2,3],3,0,)
+Solution().swap_permute([1, 2, 3], 3, 0, )
 print(Solution().res2)

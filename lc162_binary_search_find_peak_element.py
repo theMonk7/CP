@@ -1,5 +1,5 @@
 class Solution:
-    def findPeakElement(self, arr: List[int]) -> int:
+    def findPeakElement(self, arr: list[int]) -> int:
         l = 0
         h = len(arr) - 1
 

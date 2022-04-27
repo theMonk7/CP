@@ -9,7 +9,7 @@ def print_subsequences(s, n, temp_arr, i, res_arr):
     print_subsequences(s, n, temp_arr.copy(), i + 1, res_arr)
 
 
-s = "123"
+s = "1223"
 n = len(s)
 res = []
 # print_subsequences(s, n, [], 0, res)
@@ -19,7 +19,8 @@ res.sort()
 
 # print(res)
 
-# Iterative-Recursive approach
+
+# Iterative-Recursive approach ~ BACKTRACKING
 def subsets_iterative(nums):
     if len(nums) == 0:
         return [[]]
@@ -39,7 +40,8 @@ def subsets_iterative(nums):
 # Backtracking Approach
 res_bt = []
 
-def subsets_backtracking(nums, temp, i, n,):
+
+def subsets_backtracking(nums, temp, i, n):
     res_bt.append(temp)
     for k in range(i, n):
         temp.append(nums[k])
@@ -48,5 +50,5 @@ def subsets_backtracking(nums, temp, i, n,):
 
 
 p = [1, 2, 3]
-subsets_backtracking(p, [], 0, len(p))
-print(res_bt)
+# subsets_backtracking(p, [], 0, len(p))
+# print(res_bt)
