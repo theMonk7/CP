@@ -73,6 +73,49 @@ class Recursion_Basics:
         else:
             return s1[0] + self.skip_string(s1[1:], filt, filt_len)
 
+    def uniquePathsInAMatrixDownRight(self, m: int, n: int) -> int:
+        if m == 1 or n == 1:
+            return 1
+        return self.uniquePathsInAMatrixDownRight(m - 1, n) + self.uniquePathsInAMatrixDownRight(m, n - 1)
+
+    def printPathInMatrixTraversalRightDown(self, m: int, n: int, choices: list[str], path: str):
+        if m == 1 and n == 1:
+            print(path)
+            return
+
+        if m > 1:
+            self.printPathInMatrixTraversalRightDown(m - 1, n, choices, path + "D")
+        if n > 1:
+            self.printPathInMatrixTraversalRightDown(m, n - 1, choices, path + "R")
+        if n > 1 and m > 1:
+            self.printPathInMatrixTraversalRightDown(m - 1, n - 1, choices, path + "d")
+
+    def traversing_matrix_with_obstacles(self, board: list[list[bool]], r: int, c: int, path: str):
+        if r == 1 and c == 1:
+            print(path)
+            return
+        if r > 1 and board[len(board) - r][len(board[0]) - c]:
+            self.traversing_matrix_with_obstacles(board, r - 1, c, path + "D")
+        if c > 1 and board[len(board) - r][len(board[0]) - c]:
+            self.traversing_matrix_with_obstacles(board, r, c - 1, path + "R")
+
+    def traversing_matrix_with_obstacles_all_directions(self, board: list[list[bool]], r: int, c: int, path: str):
+
+        if r == len(board) - 1 and c == len(board[0]) - 1:
+            print(path)
+            return
+        if not board[r][c]:
+            return
+        board[r][c] = False
+        if r < len(board) - 1:
+            self.traversing_matrix_with_obstacles_all_directions([row[:] for row in board], r + 1, c, path + "D")
+        if c < len(board[0]) - 1:
+            self.traversing_matrix_with_obstacles_all_directions([row[:] for row in board], r, c + 1, path + "R")
+        if r > 0:
+            self.traversing_matrix_with_obstacles_all_directions([row[:] for row in board], r - 1, c, path + "U")
+        if c > 0:
+            self.traversing_matrix_with_obstacles_all_directions([row[:] for row in board], r, c - 1, path + "L")
+        board[r][c] = True
 
 recursion = Recursion_Basics()
 # recursion.print_till_n_1(6)
@@ -87,4 +130,13 @@ arr = [2, 4, 2, 1, 9, 3, 0]
 # print(arr)
 
 # print(recursion.string_filter("abcdfdada", "a"))
-print(recursion.skip_string("This is apple and apple is very very appley", "apple", 5))
+# print(recursion.skip_string("This is apple and apple is very very appley", "apple", 5))
+# recursion.printPathInMatrixTraversalRightDown(3, 3, ["D", "R"], "")
+
+board = [
+    [True, True, True],
+    [True, False, True],
+    [True, True, True]
+]
+# recursion.traversing_matrix_with_obstacles(board, len(board), len(board[0]), "")
+recursion.traversing_matrix_with_obstacles_all_directions(board, 0, 0, "")

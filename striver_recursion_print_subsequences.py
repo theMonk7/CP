@@ -50,5 +50,5 @@ def subsets_backtracking(nums, temp, i, n):
 
 
 p = [1, 2, 3]
-# subsets_backtracking(p, [], 0, len(p))
-# print(res_bt)
+subsets_backtracking(p, [], 0, len(p))
+print(res_bt)

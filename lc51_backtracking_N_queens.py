@@ -57,8 +57,7 @@ class Solution(object):
         self.bottom_up_hash = dict([(i, False) for i in range(2*(n-1)+1)])
         self.tob_bottom_hash = dict([(i, False) for i in range(2*(n-1)+1)])
 
-    def is_safe_optimised_hashing(self, r: int, c: int) -> bool:
-        pass
+
 
 
 print(Solution().solveNQueens(4))
