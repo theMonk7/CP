@@ -117,6 +117,7 @@ class Recursion_Basics:
             self.traversing_matrix_with_obstacles_all_directions([row[:] for row in board], r, c - 1, path + "L")
         board[r][c] = True
 
+
 recursion = Recursion_Basics()
 # recursion.print_till_n_1(6)
 # print(recursion.factorial(6))
@@ -138,5 +139,104 @@ board = [
     [True, False, True],
     [True, True, True]
 ]
+
+
 # recursion.traversing_matrix_with_obstacles(board, len(board), len(board[0]), "")
-recursion.traversing_matrix_with_obstacles_all_directions(board, 0, 0, "")
+# recursion.traversing_matrix_with_obstacles_all_directions(board, 0, 0, "")
+
+
+# Coding Ninjas Recursion
+# pip => 3.14p
+# ppi
+
+def func(s: list[str]):
+    if len(s) <= 0:
+        return ""
+    if len(s) == 1:
+        return s[0]
+    elif s[0] == "p" and s[1] == "i":
+        p = func(s[2:])
+        return "3.14" + p
+    else:
+        p = func(s[1:])
+        return s[0] + p
+
+
+def removeX(s: str):
+    return "".join(__helper(list(s), 0))
+
+
+import math
+
+
+def __helper(s: list[str], ind: int):
+    if ind >= len(s):
+        return s
+    if s[ind] == "x":
+        s[ind] = ""
+    return __helper(s, ind + 1)
+
+
+def string_to_int(s: str, ind: int, cnt: int, f=False):
+    if ind == len(s) - 1:
+        return ord(s[ind]) - ord("0")
+    k = s[ind]
+    if k == "0" and not f:
+        return string_to_int(s, ind + 1, f)
+    else:
+        f = True
+        p = ord(k) - ord("0")
+        temp = string_to_int(s, ind + 1, cnt + 1, f)
+
+        return p * pow(10, cnt) + temp
+
+
+def maximise():
+    m = -100
+    a = b = 0
+    mi = 10000000000000
+    for x in range(0, 10):
+        for y in range(0, 6):
+            if 137 * x + 351 * y <= 1221 and 2000 * x + 5000 * y >= m and 137 * x + 351 * y <= mi:
+                a = x
+                b = y
+                m = 2000 * x + 5000 * y
+                print(a, b, m, 137 * x + 351 * y)
+    print(a, b, m)
+
+
+# Driver code
+if __name__ == "__main__":
+    string = list("pippipi")
+
+    # Function call
+    # print(func(string))
+    # print(removeX("jhjxh"))
+
+    # print(string_to_int("123", 0,0))
+    maximise()
+
+
+def changeTree(root):
+    # Write your code here.
+    if root is None:
+        return
+    r = l = 0
+    if root.left:
+        l = root.left.data
+    if root.right:
+        r = root.right.data
+    if root.data > r + l:
+        if root.left:
+            root.left.data = root.data
+        if root.right:
+            root.right.data = root.data
+    changeTree(root.left)
+    changeTree(root.right)
+    if root.left or root.right:
+        l = r = 0
+        if root.left:
+            l = root.left.data
+        if root.right:
+            r = root.right.data
+        root.data = l + r
